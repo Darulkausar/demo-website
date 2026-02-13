@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Darul Kausar - Result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; text-align: center; background: #f4f6f8; }
+    .box { background: white; padding: 20px; margin: 40px auto; width: 90%; max-width: 400px; border-radius: 10px; }
+    h1 { margin-bottom: 5px; }
+    input, button { width: 90%; padding: 10px; margin: 8px 0; }
+    button { background: #0a8754; color: white; border: none; border-radius: 5px; }
+    #output { margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h1>DARUL KAUSAR</h1>
+  <p>Class 3 – Examination Result</p>
+
+  <input type="text" id="name" placeholder="Student Name">
+  <input type="password" id="pass" placeholder="Password">
+  <button onclick="check()">Check Result</button>
+
+  <div id="output"></div>
+</div>
+
+<script>
+const students = {
+  "Nabhan": { password: "1", result: "Qualified – Alhamdulillah" },
+  "Sama": { password: "2", result: "Qualified – Alhamdulillah" },
+  "Hadi": { password: "3", result: "Qualified – Alhamdulillah" },
+  "Faizan": { password: "4", result: "Qualified – Alhamdulillah" },
+  "Ambru": { password: "0", result: "Needs Improvement" }
+};
+
+function check() {
+  const name = document.getElementById("name").value.trim();
+  const pass = document.getElementById("pass").value.trim();
+  const out = document.getElementById("output");
+
+  if (students[name] && students[name].password === pass) {
+    out.innerText = "Status: " + students[name].result;
+  } else {
+    out.innerText = "Invalid name or password";
+  }
+}
+</script>
+
+</body>
+</html>
