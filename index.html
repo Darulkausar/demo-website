@@ -3,65 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Darul Kausar – Class 3 Result</title>
+<title>Darul Kausar Result Portal</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
 <style>
 body {font-family: Arial, sans-serif; background:#fdfaf6; margin:0; padding:0;}
-header {background:#0B6623; color:white; text-align:center; padding:20px; border-radius:10px; font-family:'Amiri', serif;}
-h1 {margin:5px 0; font-size:1.8em;}
-p {margin:0; font-size:1.1em;}
+header {background:#0B6623; color:white; text-align:center; padding:20px; font-family:'Amiri', serif;}
 .container {max-width:500px; margin:20px auto; text-align:center;}
-input {padding:10px; margin:5px 0; width:80%; border-radius:5px; border:1px solid #ccc;}
+select,input {padding:10px; margin:5px 0; width:85%; border-radius:5px; border:1px solid #ccc;}
 button {padding:10px 15px; margin:10px 0; background:#0B6623; color:white; border:none; border-radius:5px; cursor:pointer;}
-table {width:100%; border-collapse:collapse; margin-top:20px;}
-th, td {padding:10px; border:1px solid #ddd; text-align:center;}
-th {background:#0B6623; color:white;}
+.result-box {margin-top:20px; padding:15px; background:white; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
 .status-qualified {color:green; font-weight:bold;}
 .status-improve {color:#ff9800; font-weight:bold;}
-.hidden {display:none;}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>دار الكوثر – Darul Kausar Madrassa</h1>
-  <p>Class 3 – Examination Result</p>
+<h1>دار الكوثر – Darul Kausar Madrassa</h1>
+<p>Examination Result Portal</p>
 </header>
 
 <div class="container">
-  <input type="text" id="studentName" placeholder="Enter Name">
-  <input type="password" id="studentPassword" placeholder="Enter Password">
-  <button onclick="checkResult()">Check Result</button>
+
+<select id="studentClass">
+<option value="">Select Class</option>
+<option value="1">Class 1</option>
+<option value="2">Class 2</option>
+</select>
+
+<input type="text" id="studentName" placeholder="Enter Name">
+<input type="password" id="studentPassword" placeholder="Enter Password">
+
+<button onclick="checkResult()">Check Result</button>
+
+<div id="result" class="result-box" style="display:none;"></div>
+
 </div>
 
-<table id="resultTable" class="hidden">
-  <tr><th>Name</th><th>Status</th></tr>
-  <tr data-name="Nabhan" data-pass="1"><td>Nabhan</td><td class="status-qualified">Qualified – Alhamdulillah</td></tr>
-  <tr data-name="Sama" data-pass="2"><td>Sama</td><td class="status-qualified">Qualified – Alhamdulillah</td></tr>
-  <tr data-name="Hadi" data-pass="3"><td>Hadi</td><td class="status-qualified">Qualified – Alhamdulillah</td></tr>
-  <tr data-name="Faizan" data-pass="4"><td>Faizan</td><td class="status-qualified">Qualified – Alhamdulillah</td></tr>
-  <tr data-name="Ambru" data-pass="0"><td>Ambru</td><td class="status-improve">Needs Improvement</td></tr>
-</table>
-
 <script>
-function checkResult() {
-  let name = document.getElementById('studentName').value.trim();
-  let pass = document.getElementById('studentPassword').value.trim();
-  let rows = document.querySelectorAll('#resultTable tr[data-name]');
-  let found = false;
 
-  rows.forEach(row => {
-    if(row.dataset.name === name && row.dataset.pass === pass) {
-      row.style.display = '';
-      found = true;
-    } else {
-      row.style.display = 'none';
-    }
-  });
-
-  document.getElementById('resultTable').classList.toggle('hidden', !found);
-  if(!found) alert("Name or Password incorrect");
+const students = {
+1: {
+"Ahammed Amaan":"11704|Qualified – Alhamdulillah",
+"Muhammed Zayan":"11715|Qualified – Alhamdulillah",
+"Muhammed Rayan":"11718|Qualified – Alhamdulillah",
+"Zamar Muhammed Shah":"11720|Needs Improvement",
+"Nooh":"11722|Qualified – Alhamdulillah",
+"Raees":"11725|Qualified – Alhamdulillah",
+"Afid Nishan":"11726|Qualified – Alhamdulillah",
+"Mohammad Aslah":"11727|Qualified – Alhamdulillah",
+"Muadh":"11731|Qualified – Alhamdulillah",
+"Rizwa Fathima":"11696|Qualified – Alhamdulillah",
+"Thanha":"11697|Qualified – Alhamdulillah",
+"Kenzah Khadeeja":"11699|Qualified – Alhamdulillah",
+"Fathimathu Riza":"11719|Needs Improvement",
+"Rizwana":"11721|Qualified – Alhamdulillah",
+"Hana Mariyam":"11723|Qualified – Alhamdulillah",
+"Ayisha Mehza":"11724|Qualified – Alhamdulillah",
+"Faiza Fathima":"11728|Qualified – Alhamdulillah",
+"Nehal Fathima":"11735|Needs Improvement"
+},
+2: {
+"Muhammed Raizan":"21642|Qualified – Alhamdulillah",
+"Muhammed Ziyan":"21682|Qualified – Alhamdulillah",
+"Muhammed Siyan":"21667|Qualified – Alhamdulillah",
+"Muhammed Hafil":"21673|Qualified – Alhamdulillah",
+"Muhammed Razal":"21675|Qualified – Alhamdulillah",
+"Muhammed Arshad":"21676|Qualified – Alhamdulillah",
+"Arham Shefeeque":"21703|Qualified – Alhamdulillah",
+"Muhammed Rayan":"21707|Qualified – Alhamdulillah",
+"Fathima Zara":"21671|Qualified – Alhamdulillah",
+"Farha":"21679|Qualified – Alhamdulillah",
+"Fathimath Zahra Bathool":"21698|Qualified – Alhamdulillah",
+"Ayisha Hamdah":"21706|Qualified – Alhamdulillah",
+"Nyza Mirsaal":"21711|Qualified – Alhamdulillah",
+"Ayana Nasrin":"21732|Qualified – Alhamdulillah"
 }
+};
+
+function checkResult() {
+let classSelected = document.getElementById("studentClass").value;
+let name = document.getElementById("studentName").value.trim();
+let pass = document.getElementById("studentPassword").value.trim();
+let resultBox = document.getElementById("result");
+
+if(!classSelected || !name || !pass){
+alert("Please fill all fields");
+return;
+}
+
+if(students[classSelected] && students[classSelected][name]){
+let data = students[classSelected][name].split("|");
+if(data[0] === pass){
+let statusClass = data[1].includes("Improvement") ? "status-improve" : "status-qualified";
+resultBox.innerHTML = `<h3>${name}</h3><p class="${statusClass}">${data[1]}</p>`;
+resultBox.style.display = "block";
+return;
+}
+}
+
+alert("Name or Password incorrect");
+resultBox.style.display = "none";
+}
+
 </script>
 
 </body>
